@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const Restaurants = require('./restaurant.js');
+const Restaurant = require('./Restaurant.js');
 
 mongoose.set('useCreateIndex', true);
 
 const db = mongoose.connection;
 
-mongoose.connect('mongodb://mongo:27017/zagat', {
+mongoose.connect('mongodb://localhost/zagat', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -14,17 +14,23 @@ mongoose.connect('mongodb://mongo:27017/zagat', {
 
 
 const get = (id) => {
-  return new Promise((resolve, reject) => {
-    Restaurants.find({ id })
-      .exec((err, docs) => {
-        if (err) {
-          reject(err);
-        }
-        resolve(docs);
-      });
-  });
+  return Restaurant.findOne({ id });
 };
 
-module.exports = { db, get };
+const create = (newRestaurant) => {
+  return Restaurant.create(newRestaurant);
+};
+
+const update = (id, updatedData) => {
+  return Restaurant.findOneAndUpdate({ id }, updatedData, { new: true });
+};
+
+const remove = (id) => {
+  return Restaurant.findOneAndDelete( { id });
+}
+
+
+
+module.exports = { db, get, create, update, remove };
 
 //'mongodb://mongo:27017/zagat' ||

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const db = require('./index.js');
 const faker = require('faker');
-const Restaurants = require('./restaurant.js');
+const Restaurants = require('./Restaurant.js');
 
 const populate = () => {
   const data = [];
@@ -18,7 +18,7 @@ const populate = () => {
 
     for (let j = numberPhotos; j > 0; j--) {
       const num = Math.floor((Math.random() * 822 + 1));
-      const url = `https://hrr42-fec5.s3-us-west-1.amazonaws.com/photo${num}.jpg`;
+      const url = `https://zagat.s3.amazonaws.com/photo${num}.jpg`;
       restaurant.imageUrls.push(url);
     }
     data.push(restaurant);
