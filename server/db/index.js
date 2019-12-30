@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const mongoose = require('mongoose');
 const Restaurant = require('./Restaurant.js');
 
@@ -10,27 +11,20 @@ mongoose.connect('mongodb://localhost/zagat', {
   useUnifiedTopology: true,
 })
   .then(() => console.log('Database connected'))
-  .catch(err => console.log(err));
+  .catch((err) => console.log(err));
 
 
-const get = (id) => {
-  return Restaurant.findOne({ id });
+const get = (id) => Restaurant.findOne({ id });
+
+const create = (newRestaurant) => Restaurant.create(newRestaurant);
+
+const update = (id, updatedData) => Restaurant.findOneAndUpdate({ id }, updatedData, { new: true });
+
+const remove = (id) => Restaurant.findOneAndDelete({ id });
+
+
+module.exports = {
+  db, get, create, update, remove,
 };
 
-const create = (newRestaurant) => {
-  return Restaurant.create(newRestaurant);
-};
-
-const update = (id, updatedData) => {
-  return Restaurant.findOneAndUpdate({ id }, updatedData, { new: true });
-};
-
-const remove = (id) => {
-  return Restaurant.findOneAndDelete( { id });
-}
-
-
-
-module.exports = { db, get, create, update, remove };
-
-//'mongodb://mongo:27017/zagat' ||
+// 'mongodb://mongo:27017/zagat' ||
