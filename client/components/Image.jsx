@@ -41,7 +41,7 @@ const StyledImg = styled.img`
 StyledImg.displayName = 'styledimg';
 
 
-const Image = ({ src, handleClick, idx, imageUrls }) => {
+const Image = ({ src, handleClick, idx, images }) => {
   if (idx % 3 === 0) {
     return (
       <BigImgContainer>
@@ -55,7 +55,7 @@ const Image = ({ src, handleClick, idx, imageUrls }) => {
           <StyledImg src={src} onClick={() => handleClick(idx)} />
         </TopSmallContainer>
         <BottomSmallContainer>
-          <StyledImg src={imageUrls[idx + 1]} onClick={() => handleClick(idx + 1)} />
+          <StyledImg src={images[idx + 1]} onClick={() => handleClick(idx + 1)} />
         </BottomSmallContainer>
       </ColumnContainer>
     );

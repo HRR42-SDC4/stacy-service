@@ -1,10 +1,9 @@
-/* eslint-disable no-console */
 const express = require('express');
 require('dotenv').config();
 const parser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const db = require('./db/mongo/index.js');
+const db = require('./db/postgres/index.js');
 
 const app = express();
 
@@ -15,20 +14,19 @@ app.use(parser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 /* GET - Legacy Implementation Fixed */
-app.get('/api/restaurants/:restaurantId', (req, res) => {
+app.get('/api/restaurants/:restaurantId', async (req, res) => {
   const id = req.params.restaurantId;
-  db.get(id)
-    .then((entry) => {
-      if (entry) {
-        res.send(entry);
-      } else {
-        res.status(404).send({ error: 'Entry does not exist' });
-      }
-    })
-    .catch((err) => {
-      console.log('Error: ', err);
-      res.status(404).end();
-    });
+  try {
+    const entry = await db.get(id);
+    if (entry) {
+      res.send(entry);
+    } else {
+      res.status(404).send({ error: 'Entry does not exist' });
+    }
+  } catch (err) {
+    console.log('Error: ', err);
+    res.status(404).end();
+  }
 });
 
 app.post('/api/restaurants', (req, res) => {
@@ -43,7 +41,6 @@ app.post('/api/restaurants', (req, res) => {
 app.put('/api/restaurants/:restaurantId', (req, res) => {
   const { restaurantId } = req.params;
   db.update(restaurantId, req.body)
-    // Better status code for PUT 200?
     .then((updatedRestaurant) => res.status(200).send(updatedRestaurant))
     .catch((err) => {
       console.log('Error: ', err);
