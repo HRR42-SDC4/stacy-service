@@ -2,6 +2,9 @@ const fs = require('fs');
 const faker = require('faker');
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
+/* Override seed date so Faker outputs same random number */
+/* faker.seed(0); */
+
 const writer = createCsvWriter({
   path: 'data.csv',
   header: [
@@ -17,7 +20,8 @@ const writer = createCsvWriter({
       id: 'images',
       title: 'images',
     }
-  ]
+  ],
+  fieldDelimiter: ';',
 });
 
 function* restaurantGenerator() {
@@ -31,7 +35,7 @@ function* restaurantGenerator() {
     yield {
       id,
       name: faker.company.companyName(),
-      images: JSON.stringify(images),
+      images: '[' + images.join(',') + ']',
     };
   }
 }
@@ -48,9 +52,10 @@ async function writeRestaurants(num, numPerBatch = 1000) {
 }
 
 async function main() {
-  console.time('data generation');
+  console.time('Data Generation Time');
   await writeRestaurants(1e7, 100000);
-  console.timeEnd('data generation');
+  // await writeRestaurants(1000, 1000);
+  console.timeEnd('Data Generation Time');
 }
 
 main();
