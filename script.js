@@ -20,22 +20,22 @@ export default function() {
 
 
 /* POST */
-// export default function() {
-//   const url = `http://localhost:3001/api/restaurants`;
+export default function() {
+  const url = `http://localhost:3001/api/restaurants`;
 
-//   const payload = {
-//     name: "Laduree",
-//     images: JSON.stringify(["https://hrr42-sdc.s3.amazonaws.com/photo101.jpg",
-//     "https://hrr42-sdc.s3.amazonaws.com/photo102.jpg",
-//     "https://hrr42-sdc.s3.amazonaws.com/photo103.jpg",
-//     "https://hrr42-sdc.s3.amazonaws.com/photo104.jpg"]),
-//   };
+  const payload = {
+    name: "Laduree",
+    images: JSON.stringify(["https://hrr42-sdc.s3.amazonaws.com/photo101.jpg",
+      "https://hrr42-sdc.s3.amazonaws.com/photo102.jpg",
+      "https://hrr42-sdc.s3.amazonaws.com/photo103.jpg",
+      "https://hrr42-sdc.s3.amazonaws.com/photo104.jpg"]),
+  };
 
-//   const params = { headers: {'Content-Type': 'application/x-www-form-urlencoded'} };
+  const params = { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } };
 
-//   const res = http.post(url, payload, params);
+  const res = http.post(url, payload, params);
 
-//   check(res, {
-//     "status is 201": (r) => r.status == 201
-//   });
-// };
+  check(res, {
+    "status is 201": (r) => r.status == 201
+  });
+};
