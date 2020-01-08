@@ -6,7 +6,7 @@ const db = knex({
 });
 
 const get = async (id) => {
-  const rows = await db('restaurants').where({id});
+  const rows = await db('restaurants').where({ id });
   if (rows.length === 0) {
     return null;
   }
@@ -32,7 +32,7 @@ const update = async (id, updatedData) => {
     updatedData.images = JSON.parse(updatedData.images);
   }
   const rows = await db('restaurants')
-    .where({id})
+    .where({ id })
     .update(updatedData)
     .returning('*');
 
@@ -44,7 +44,7 @@ const update = async (id, updatedData) => {
 
 const remove = async (id) => {
   const rows = await db('restaurants')
-    .where({id})
+    .where({ id })
     .del()
     .returning('*');
   if (rows.length === 0) {
