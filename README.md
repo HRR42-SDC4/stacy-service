@@ -1,4 +1,4 @@
-# Student Design Capstone | Zagat
+# System Design Capstone | Zagat
 
 > Project description
 
