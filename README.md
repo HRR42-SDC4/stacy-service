@@ -1,25 +1,16 @@
-# System Design Capstone | Zagat
+# Earth Guide
 
-> Project description
-
-## Related Projects
-
-  - [stacy-proxy](https://github.com/HRR42-SDC4/stacy-proxy)
-  - [dan-service](https://github.com/HRR42-SDC4/dan-service)
-  - [dan-proxy](https://github.com/HRR42-SDC4/dan-proxy)
-  - [john-service](https://github.com/HRR42-SDC4/john-service)
-  - [john-proxy](https://github.com/HRR42-SDC4/john-proxy)
+Backend System Design Capstone
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-1. [API](#api)
+- [Usage](#Usage)
+- [Requirements](#requirements)
+- [Development](#development)
+- [API](#api)
+- [Related Projects](#related-projects)
 
 ## Usage
-
-> Coming Soon: Usage instructions
 
 ## Requirements
 
@@ -38,11 +29,7 @@ npm install webpack
 npm install
 ```
 
-
-# API
-
-CRUD ㅡ Create · Read · Update · Delete
-
+## API
 
 **POST**
 
@@ -60,3 +47,11 @@ CRUD ㅡ Create · Read · Update · Delete
 
 > [/api/images/:restaurantId](http://localhost:3001/api/images/:restaurantId)
 
+
+## Related Projects
+
+- [stacy-proxy](https://github.com/HRR42-SDC4/stacy-proxy)
+- [dan-service](https://github.com/HRR42-SDC4/dan-service)
+- [dan-proxy](https://github.com/HRR42-SDC4/dan-proxy)
+- [john-service](https://github.com/HRR42-SDC4/john-service)
+- [john-proxy](https://github.com/HRR42-SDC4/john-proxy)
